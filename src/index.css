@@ -2,41 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Café & Bakery Design System - Dark Monochrome with Golden Warmth
+All colors MUST be HSL. Persian/RTL focused design.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Dark monochrome foundation */
+    --background: 220 8% 8%;
+    --foreground: 30 15% 92%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Cards and surfaces */
+    --card: 220 10% 12%;
+    --card-foreground: 30 12% 88%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 12% 10%;
+    --popover-foreground: 30 15% 92%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Brand colors - Deep charcoal primary */
+    --primary: 220 15% 15%;
+    --primary-foreground: 45 35% 85%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Warm golden accents for wheat/bread elements */
+    --secondary: 45 65% 65%;
+    --secondary-foreground: 220 20% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted tones */
+    --muted: 220 8% 18%;
+    --muted-foreground: 30 8% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Golden accent for highlights */
+    --accent: 42 75% 68%;
+    --accent-foreground: 220 25% 12%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Warm destructive */
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 30 15% 92%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Subtle borders */
+    --border: 220 12% 20%;
+    --input: 220 12% 16%;
+    --ring: 42 75% 68%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Custom bakery theme variables */
+    --wheat-gold: 45 85% 72%;
+    --deep-charcoal: 220 15% 12%;
+    --warm-shadow: 220 25% 8%;
+    --golden-glow: 42 90% 75%;
+    --bread-amber: 35 70% 68%;
+
+    /* Typography shadows and glows */
+    --text-shadow-warm: 0 2px 12px hsl(42 60% 30% / 0.3);
+    --golden-shadow: 0 4px 20px hsl(42 75% 68% / 0.15);
+
+    /* Gradients */
+    --gradient-warm: linear-gradient(135deg, hsl(220 15% 12%), hsl(220 12% 15%));
+    --gradient-golden: linear-gradient(45deg, hsl(42 75% 68%), hsl(45 85% 72%));
+    --gradient-depth: linear-gradient(180deg, hsl(220 8% 8%), hsl(220 12% 10%));
+
+    /* Animation variables */
+    --transition-warm: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-gentle: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -55,42 +83,9 @@ All colors MUST be HSL.
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
+  /* Dark theme is our default - maintaining consistency */
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Keep same variables as root for consistency */
   }
 }
 
@@ -100,6 +95,78 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-vazir;
+    direction: rtl;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Persian typography improvements */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  /* Gentle parallax base */
+  .parallax-element {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  /* Custom scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent));
+  }
+}
+
+@layer components {
+  /* Bakery-specific component styles */
+  .hero-gradient {
+    background: var(--gradient-depth);
+  }
+
+  .wheat-texture {
+    position: relative;
+  }
+
+  .wheat-texture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 25% 25%, hsl(var(--wheat-gold) / 0.03) 0%, transparent 50%),
+                      radial-gradient(circle at 75% 75%, hsl(var(--bread-amber) / 0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .text-glow {
+    text-shadow: var(--text-shadow-warm);
+  }
+
+  .golden-glow {
+    box-shadow: var(--golden-shadow);
+  }
+
+  .transition-warm {
+    transition: var(--transition-warm);
+  }
+
+  .transition-gentle {
+    transition: var(--transition-gentle);
   }
 }
